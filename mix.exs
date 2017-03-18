@@ -15,6 +15,8 @@ defmodule Overpex.Mixfile do
   end
 
   defp deps do
-    []
+    [{:httpoison, "~> 0.11.0"},
+     {:sweet_xml, "~> 0.6.5"},
+     {:poison, "~> 3.1.0"}]
   end
 end

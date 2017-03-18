@@ -1,18 +1,7 @@
 defmodule Overpex do
-  @moduledoc """
-  Documentation for Overpex.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Overpex.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def query(query, options \\ %{}) do
+    query
+    |> Overpex.API.query(options)
+    |> Overpex.Parser.parse()
   end
 end
