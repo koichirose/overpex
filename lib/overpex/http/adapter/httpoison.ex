@@ -15,7 +15,7 @@ defmodule Overpex.HTTP.Adapter.HTTPoison do
 
   defp parse_response({:error, error = %HTTPoison.Error{}}) do
     {:error,
-      %Overpex.HTTP.Error{
+      %Overpex.Error{
         reason: error.reason,
         id:     error.id
       }}

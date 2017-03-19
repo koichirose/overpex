@@ -1,4 +1,4 @@
-defmodule Overpex.HTTP.Error do
+defmodule Overpex.Error do
   defexception reason: nil, id: nil
   @type t :: %__MODULE__{id: reference, reason: any}
 

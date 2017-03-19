@@ -13,7 +13,7 @@ defmodule Overpex.API do
   end
 
   defp process_response({:ok, %Overpex.HTTP.Response{status_code: code, body: _body, headers: _headers}}) do
-    {:error, "status_code: #{code}"}
+    {:error, "Invalid status code: #{code}. Expected 200"}
   end
 
   defp process_response({:error, error}) do

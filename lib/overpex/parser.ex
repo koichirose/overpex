@@ -13,8 +13,13 @@ defmodule Overpex.Parser do
     Overpex.Parser.JSON.parse(response)
   end
 
-  @spec parse({:error, String.t}) :: {:error, String.t}
-  def parse({:error, error}) do
-    {:error, error}
+  @spec parse({:error, %Overpex.Error{}}) :: {:error, %Overpex.Error{}}
+  def parse(error = {:error, %Overpex.Error{}}) do
+    error
+  end
+
+  @spec parse({:error, String.t}) :: {:error, %Overpex.Error{}}
+  def parse({:error, error}) when is_binary(error) do
+    {:error, %Overpex.Error{reason: error}}
   end
 end

@@ -17,7 +17,7 @@ defmodule Overpex.HTTP.Adapter.Fake do
 
   defp build_response(response = %{"type" => "failure"}) do
     {:error,
-      %Overpex.HTTP.Error{
+      %Overpex.Error{
         reason: response["reason"],
         id:     response["id"]
       }}
