@@ -1,5 +1,7 @@
 # Overpex
 
+[![Build Status](https://travis-ci.org/brunoasantos/overpex.svg?branch=master)](https://travis-ci.org/brunoasantos/overpex)
+
 **TODO: Add description**
 
 ## Installation
@@ -9,7 +11,7 @@ by adding `overpex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:overpex, "~> 0.1.0"}]
+  [{:overpex, "~> 0.1.1"}]
 end
 ```
 
