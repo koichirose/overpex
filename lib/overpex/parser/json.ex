@@ -1,14 +1,27 @@
 defmodule Overpex.Parser.JSON do
+  def parse(response) when is_binary(response) do
+    with {:ok, json}               <- Poison.decode(response),
+         %{"elements" => elements} <- Enum.into(json, %{}),
+         elems                     <- Enum.map(elements, fn (node) -> Enum.into(node, %{}) end)
+    do
+      {:ok, %Overpex.Response{
+        nodes:     parse_nodes(elems),
+        ways:      parse_ways(elems),
+        relations: parse_relations(elems)
+      }}
+    else
+      {:error, :invalid, _}      -> error_response("Error parsing JSON", response)
+      {:error, {:invalid, _, _}} -> error_response("Error parsing JSON", response)
+      %{}                        -> error_response("No elements to parse in response", response)
+      error                      -> error_response("Error parsing JSON: #{inspect(error)}", inspect(response))
+    end
+  end
   def parse(response) do
-    %{"elements" => elements} = response |> Poison.decode! |> Enum.into(%{})
-    elems = elements
-            |> Enum.map(fn (node) -> node |> Enum.into(%{}) end)
+    error_response("Invalid response", inspect(response))
+  end
 
-    {:ok, %Overpex.Response{
-      nodes:     parse_nodes(elems),
-      ways:      parse_ways(elems),
-      relations: parse_relations(elems)
-    }}
+  defp error_response(message, response) do
+    {:error, %Overpex.Error{reason: "#{message}\n\nResponse received: #{response}"}}
   end
 
   defp parse_nodes(elems) do
