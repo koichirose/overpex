@@ -1,0 +1,40 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API",
+  "osm3s": {
+    "timestamp_osm_base": "2017-03-23T20:21:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "relation",
+      "id": 1745069,
+      "members": [
+        {
+          "type": "node",
+          "ref": 1627815522,
+          "role": "stop"
+        },
+        {
+          "type": "node",
+          "ref": 1564118492,
+          "role": "platform"
+        },
+        {
+          "type": "way",
+          "ref": 4842146,
+          "role": ""
+        },
+        {
+          "type": "way",
+          "ref": 11159140,
+          "role": ""
+        }
+      ],
+      "tags": {
+        "name": "VRS 636 Hangelar Ost",
+        "type": "route"
+      }
+    }
+  ]
+}

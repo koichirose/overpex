@@ -7,13 +7,15 @@
   },
   "elements": [
     {
-      "type": "node",
-      "id": 150947015,
-      "lat": 46.973427,
-      "lon": -123.69238,
+      "type": "way",
+      "id": 4842146,
+      "nodes": [
+        26508622,
+        633736359
+      ],
       "tags": {
-        "name": "Central Park",
-        "place": "village"
+        "name": "Konrad-Adenauer-Platz",
+        "highway": "tertiary"
       }
     }
   ]

@@ -1,0 +1,62 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API",
+  "osm3s": {
+    "timestamp_osm_base": "2017-03-23T20:21:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 150947015,
+      "lat": 46.973427,
+      "lon": -123.69238,
+      "tags": {
+        "name": "Central Park",
+        "place": "village"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 1745069,
+      "members": [
+        {
+          "type": "node",
+          "ref": 1627815522,
+          "role": "stop"
+        },
+        {
+          "type": "node",
+          "ref": 1564118492,
+          "role": "platform"
+        },
+        {
+          "type": "way",
+          "ref": 4842146,
+          "role": ""
+        },
+        {
+          "type": "way",
+          "ref": 11159140,
+          "role": ""
+        }
+      ],
+      "tags": {
+        "name": "VRS 636 Hangelar Ost",
+        "type": "route"
+      }
+    },
+    {
+      "type": "way",
+      "id": 4842146,
+      "nodes": [
+        26508622,
+        633736359
+      ],
+      "tags": {
+        "name": "Konrad-Adenauer-Platz",
+        "highway": "tertiary"
+      }
+    }
+  ]
+}
