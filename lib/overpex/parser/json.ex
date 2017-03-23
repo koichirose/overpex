@@ -16,6 +16,7 @@ defmodule Overpex.Parser.JSON do
       error                      -> error_response("Error parsing JSON: #{inspect(error)}", inspect(response))
     end
   end
+
   def parse(response) do
     error_response("Invalid response", inspect(response))
   end
@@ -75,7 +76,9 @@ defmodule Overpex.Parser.JSON do
 
   defp parse_tags([]), do: []
   defp parse_tags(collection) do
-    collection |> Enum.map(&parse_tag/1)
+    collection
+    |> Enum.map(&parse_tag/1)
+    |> Enum.sort(fn(a, b) -> a.key <= b.key end)
   end
 
   defp parse_tag({key, value}) do

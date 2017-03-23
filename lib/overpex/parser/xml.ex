@@ -1,15 +1,29 @@
 defmodule Overpex.Parser.XML do
   import SweetXml
 
-  def parse(response) do
-    osm = xpath(response, ~x"//osm")
+  def parse(response) when is_binary(response) do
+    try do
+      case xpath(response, ~x"//osm") do
+        nil   -> error_response("No elements to parse in response", response)
+        elems ->
+          {:ok, %Overpex.Response{
+            nodes:     parse_nodes(elems),
+            ways:      parse_ways(elems),
+            relations: parse_relations(elems)
+          }}
+      end
+    catch
+      # Handle SweetXML through :exit if the XML is invalid
+      :exit, _ -> error_response("Error parsing XML", response)
+    end
+  end
 
-    {:ok,
-      %Overpex.Response{
-        nodes:     parse_nodes(osm),
-        ways:      parse_ways(osm),
-        relations: parse_relations(osm)
-    }}
+  def parse(response) do
+    error_response("Invalid response", inspect(response))
+  end
+
+  defp error_response(message, response) do
+    {:error, %Overpex.Error{reason: "#{message}\n\nResponse received: #{response}"}}
   end
 
   defp parse_nodes(osm) do
@@ -67,6 +81,7 @@ defmodule Overpex.Parser.XML do
     collection
     |> xpath(~x"./tag"l)
     |> Enum.map(&parse_tag/1)
+    |> Enum.sort(fn(a, b) -> a.key <= b.key end)
   end
 
   defp parse_tag(tag) do

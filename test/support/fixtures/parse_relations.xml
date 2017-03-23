@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API">
+  <note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+  <meta osm_base="2017-03-23T21:40:02Z"/>
+  <relation id="1745069">
+    <member type="node" ref="1627815522" role="stop"/>
+    <member type="node" ref="1564118492" role="platform"/>
+    <member type="way" ref="4842146" role=""/>
+    <member type="way" ref="11159140" role=""/>
+    <tag k="name" v="VRS 636 Hangelar Ost"/>
+    <tag k="type" v="route"/>
+  </relation>
+</osm>
