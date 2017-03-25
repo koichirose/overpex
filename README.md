@@ -79,4 +79,4 @@ Inspired by [https://github.com/CodeforChemnitz/elixir-overpass](https://github.
 
 ## License
 
-The MIT License (MIT)](./LICENSE)
+[The MIT License (MIT)](./LICENSE)
