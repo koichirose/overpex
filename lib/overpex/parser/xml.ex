@@ -1,6 +1,20 @@
 defmodule Overpex.Parser.XML do
   import SweetXml
 
+  @moduledoc """
+  Provides functions to parse XML response from Overpass API
+  """
+
+  @doc """
+  Parses XML response from Overpass API
+
+  ## Return values
+
+  Returns `{:ok, response}`, where `response` is an `Overpex.Response` struct. Returns `{:error, error}` if the XML is empty or invalid, where `error` is a String describing the error.
+  """
+  @spec parse(String.t) :: {:ok, %Overpex.Response{}} | {:error, String.t}
+  def parse(response)
+
   def parse(response) when is_binary(response) do
     try do
       case xpath(response, ~x"//osm") do
@@ -23,7 +37,7 @@ defmodule Overpex.Parser.XML do
   end
 
   defp error_response(message, response) do
-    {:error, %Overpex.Error{reason: "#{message}\n\nResponse received: #{response}"}}
+    {:error, "#{message}\n\nResponse received: #{response}"}
   end
 
   defp parse_nodes(osm) do

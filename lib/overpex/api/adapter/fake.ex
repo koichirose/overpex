@@ -1,5 +1,7 @@
-defmodule Overpex.HTTP.Adapter.Fake do
-  def post(url, _params) do
+defmodule Overpex.API.Adapter.Fake do
+  @behaviour Overpex.API.Adapter
+
+  def post(url, _query) do
     url
     |> File.read!()
     |> Poison.decode!()
@@ -8,7 +10,7 @@ defmodule Overpex.HTTP.Adapter.Fake do
 
   defp build_response(response = %{"type" => "success"}) do
     {:ok,
-      %Overpex.HTTP.Response{
+      %Overpex.API.Response{
         status_code: response["status"],
         body:        response["body"],
         headers:     response["headers"]
@@ -16,14 +18,6 @@ defmodule Overpex.HTTP.Adapter.Fake do
   end
 
   defp build_response(response = %{"type" => "failure"}) do
-    {:error,
-      %Overpex.Error{
-        reason: response["reason"],
-        id:     response["id"]
-      }}
-  end
-
-  defp build_response(error) do
-    {:error, error}
+    {:error, response["reason"]}
   end
 end

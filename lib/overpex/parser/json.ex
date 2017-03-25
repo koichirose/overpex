@@ -1,4 +1,18 @@
 defmodule Overpex.Parser.JSON do
+  @moduledoc """
+  Provides functions to parse JSON response from Overpass API
+  """
+
+  @doc """
+  Parses JSON response from Overpass API
+
+  ## Return values
+
+  Returns `{:ok, response}`, where `response` is an `Overpex.Response` struct. Returns `{:error, error}` if the JSON is empty or invalid, where `error` is a String describing the error.
+  """
+  @spec parse(String.t) :: {:ok, %Overpex.Response{}} | {:error, String.t}
+  def parse(response)
+
   def parse(response) when is_binary(response) do
     with {:ok, json}               <- Poison.decode(response),
          %{"elements" => elements} <- Enum.into(json, %{}),
@@ -22,7 +36,7 @@ defmodule Overpex.Parser.JSON do
   end
 
   defp error_response(message, response) do
-    {:error, %Overpex.Error{reason: "#{message}\n\nResponse received: #{response}"}}
+    {:error, "#{message}\n\nResponse received: #{response}"}
   end
 
   defp parse_nodes(elems) do

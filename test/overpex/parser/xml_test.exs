@@ -3,20 +3,20 @@ defmodule Overpex.Parser.XMLTest do
   alias Overpex.Parser.XML
 
   test "parse/1 with empty string" do
-    assert {:error, %Overpex.Error{reason: "Error parsing XML\n\nResponse received: "}} = XML.parse("")
+    assert {:error, "Error parsing XML\n\nResponse received: "} = XML.parse("")
   end
 
   test "parse/1 with empty XML" do
-    assert {:error, %Overpex.Error{reason: "No elements to parse in response\n\nResponse received: <nope></nope>"}} = XML.parse("<nope></nope>")
+    assert {:error, "No elements to parse in response\n\nResponse received: <nope></nope>"} = XML.parse("<nope></nope>")
   end
 
   test "parse/1 with invalid XML" do
-    assert {:error, %Overpex.Error{reason: "Error parsing XML\n\nResponse received: <yep></nope>"}} = XML.parse("<yep></nope>")
+    assert {:error, "Error parsing XML\n\nResponse received: <yep></nope>"} = XML.parse("<yep></nope>")
   end
 
   test "parse/1 with non-binary response" do
-    assert {:error, %Overpex.Error{reason: "Invalid response\n\nResponse received: 123"}} = XML.parse(123)
-    assert {:error, %Overpex.Error{reason: "Invalid response\n\nResponse received: %{a: \"b\"}"}} = XML.parse(%{a: "b"})
+    assert {:error, "Invalid response\n\nResponse received: 123"} = XML.parse(123)
+    assert {:error, "Invalid response\n\nResponse received: %{a: \"b\"}"} = XML.parse(%{a: "b"})
   end
 
   test "parse/1 elements of type 'node'" do

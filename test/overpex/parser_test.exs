@@ -16,11 +16,7 @@ defmodule Overpex.ParserTest do
     end
   end
 
-  test "parser/1 Overpex.Error" do
-    assert {:error, %Overpex.Error{}} = Overpex.Parser.parse({:error, %Overpex.Error{}})
-  end
-
-  test "parser/1 error string" do
-    assert {:error, %Overpex.Error{reason: "Error"}} = Overpex.Parser.parse({:error, "Error"})
+  test "parser/1 error" do
+    assert {:error, "Error"} = Overpex.Parser.parse({:error, "Error"})
   end
 end

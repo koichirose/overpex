@@ -3,20 +3,20 @@ defmodule Overpex.Parser.JSONTest do
   alias Overpex.Parser.JSON
 
   test "parse/1 with empty string" do
-    assert {:error, %Overpex.Error{reason: "Error parsing JSON\n\nResponse received: "}} = JSON.parse("")
+    assert {:error, "Error parsing JSON\n\nResponse received: "} = JSON.parse("")
   end
 
   test "parse/1 with empty JSON" do
-    assert {:error, %Overpex.Error{reason: "No elements to parse in response\n\nResponse received: {}"}} = JSON.parse("{}")
+    assert {:error, "No elements to parse in response\n\nResponse received: {}"} = JSON.parse("{}")
   end
 
   test "parse/1 with invalid JSON" do
-    assert {:error, %Overpex.Error{reason: "Error parsing JSON\n\nResponse received: {a: b}"}} = JSON.parse("{a: b}")
+    assert {:error, "Error parsing JSON\n\nResponse received: {a: b}"} = JSON.parse("{a: b}")
   end
 
   test "parse/1 with non-binary response" do
-    assert {:error, %Overpex.Error{reason: "Invalid response\n\nResponse received: 123"}} = JSON.parse(123)
-    assert {:error, %Overpex.Error{reason: "Invalid response\n\nResponse received: %{a: \"b\"}"}} = JSON.parse(%{a: "b"})
+    assert {:error, "Invalid response\n\nResponse received: 123"} = JSON.parse(123)
+    assert {:error, "Invalid response\n\nResponse received: %{a: \"b\"}"} = JSON.parse(%{a: "b"})
   end
 
   test "parse/1 elements of type 'node'" do

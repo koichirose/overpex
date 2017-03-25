@@ -7,7 +7,7 @@ defmodule Overpex.APITest do
 
   test "query/2 error", options do
     options = %{options | url: options.url <> "error.json"}
-    assert {:error, %Overpex.Error{}} = Overpex.API.query("foo", options)
+    assert {:error, "Reason"} = Overpex.API.query("foo", options)
   end
 
   test "query/2 error content type", options do
