@@ -30,7 +30,7 @@ defmodule Overpex.Mixfile do
 
   defp description do
     """
-    Simple wrapper for [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API).
+    Simple wrapper for the Overpass API
     """
   end
 

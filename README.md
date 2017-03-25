@@ -1,6 +1,7 @@
 # Overpex
 
 [![Build Status](https://travis-ci.org/brunoasantos/overpex.svg?branch=master)](https://travis-ci.org/brunoasantos/overpex)
+[![Hex.pm](https://img.shields.io/hexpm/v/overpex.svg)](https://hex.pm/packages/overpex)
 
 Simple wrapper for [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API).
 
@@ -79,4 +80,4 @@ Inspired by [https://github.com/CodeforChemnitz/elixir-overpass](https://github.
 
 ## License
 
-[The MIT License (MIT)](./LICENSE)
+[The MIT License (MIT)](https://github.com/brunoasantos/overpex/blob/master/LICENSE)
