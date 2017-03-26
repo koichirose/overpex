@@ -1,0 +1,24 @@
+[
+  {
+    "request": {
+      "body": "[out:json];node[\"name\"=\"Central Park\"];out 1;",
+      "headers": [],
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://overpass-api.de/api/interpreter"
+    },
+    "response": {
+      "body": "{\n  \"version\": 0.6,\n  \"generator\": \"Overpass API\",\n  \"osm3s\": {\n    \"timestamp_osm_base\": \"2017-03-26T13:04:03Z\",\n    \"copyright\": \"The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.\"\n  },\n  \"elements\": [\n\n{\n  \"type\": \"node\",\n  \"id\": 150947015,\n  \"lat\": 46.9734280,\n  \"lon\": -123.6923862,\n  \"tags\": {\n    \"ele\": \"42\",\n    \"gnis:Class\": \"Populated Place\",\n    \"gnis:County\": \"Grays Harbor\",\n    \"gnis:County_num\": \"027\",\n    \"gnis:ST_alpha\": \"WA\",\n    \"gnis:ST_num\": \"53\",\n    \"gnis:id\": \"1512077\",\n    \"import_uuid\": \"bb7269ee-502a-5391-8056-e3ce0e66489c\",\n    \"is_in\": \"Grays Harbor,Washington,Wash.,WA,USA\",\n    \"name\": \"Central Park\",\n    \"place\": \"village\"\n  }\n}\n\n  ]\n}\n",
+      "headers": {
+        "Date": "Sun, 26 Mar 2017 13:06:01 GMT",
+        "Server": "Apache/2.4.18 (Ubuntu)",
+        "Vary": "Accept-Encoding",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

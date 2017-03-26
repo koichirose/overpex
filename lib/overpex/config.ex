@@ -4,29 +4,14 @@ defmodule Overpex.Config do
   """
 
   @doc """
-  Get value from config files for `:key`
+  Get URL to the Overpass API
   
   ## Return values
 
-  Returns the value found in the config files. If nothing is found, returns `nil`.
+  Returns the value found in the config files. If nothing is found, returns the default value
   """
-  @spec get(atom) :: any | nil
-  def get(key) when is_atom(key) do
-    Application.get_env(:overpex, key)
-  end
-
-  @doc """
-  Get default values from config files
-  
-  ## Return values
-
-  Returns a map with `:url` and `:adapter` values fetched from the config files.
-  """
-  @spec default() :: %{url: any, adapter: any}
-  def default do
-    %{
-      url:     get(:url),
-      adapter: get(:adapter)
-    }
+  @spec url :: String.t
+  def url do
+    Application.get_env(:overpex, :url, "http://overpass-api.de/api/interpreter")
   end
 end

@@ -1,0 +1,24 @@
+[
+  {
+    "request": {
+      "body": "[out:xml];node[\"name\"=\"Central Park\"];out 1;",
+      "headers": [],
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://overpass-api.de/api/interpreter"
+    },
+    "response": {
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<osm version=\"0.6\" generator=\"Overpass API\">\n<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>\n<meta osm_base=\"2017-03-26T13:07:03Z\"/>\n\n  <node id=\"150947015\" lat=\"46.9734280\" lon=\"-123.6923862\">\n    <tag k=\"ele\" v=\"42\"/>\n    <tag k=\"gnis:Class\" v=\"Populated Place\"/>\n    <tag k=\"gnis:County\" v=\"Grays Harbor\"/>\n    <tag k=\"gnis:County_num\" v=\"027\"/>\n    <tag k=\"gnis:ST_alpha\" v=\"WA\"/>\n    <tag k=\"gnis:ST_num\" v=\"53\"/>\n    <tag k=\"gnis:id\" v=\"1512077\"/>\n    <tag k=\"import_uuid\" v=\"bb7269ee-502a-5391-8056-e3ce0e66489c\"/>\n    <tag k=\"is_in\" v=\"Grays Harbor,Washington,Wash.,WA,USA\"/>\n    <tag k=\"name\" v=\"Central Park\"/>\n    <tag k=\"place\" v=\"village\"/>\n  </node>\n\n</osm>\n",
+      "headers": {
+        "Date": "Sun, 26 Mar 2017 13:08:55 GMT",
+        "Server": "Apache/2.4.18 (Ubuntu)",
+        "Vary": "Accept-Encoding",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "application/osm3s+xml"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

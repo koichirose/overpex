@@ -28,8 +28,6 @@ config :overpex,
 
 The default URL is `http://overpass-api.de/api/interpreter`.
 
-You can also set a custom adapter to access the API. The default is `Overpex.API.Adapter.HTTPoison`. Please check the [documentation](https://hexdocs.pm/overpex) for more information on adapters.
-
 ## Usage
 
 Query for nodes with name `Gielgen` without the body:

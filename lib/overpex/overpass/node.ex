@@ -1,4 +1,4 @@
-defmodule Overpex.Node do
+defmodule Overpex.Overpass.Node do
   @moduledoc """
   A node is one of the core elements in the OpenStreetMap data model. It consists of a single point in space defined by its latitude, longitude and node id.
 

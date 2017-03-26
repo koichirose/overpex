@@ -1,8 +1,0 @@
-{
-  "type": "success",
-  "status": 200,
-  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<osm version=\"0.6\" generator=\"Overpass API\"><note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.<\/note><meta osm_base=\"2017-03-18T16:51:02Z\" \/><node id=\"150947015\" lat=\"46.9734280\" lon=\"-123.6923862\"><tag k=\"ele\" v=\"42\" \/><tag k=\"gnis:Class\" v=\"Populated Place\" \/><tag k=\"gnis:County\" v=\"Grays Harbor\" \/><tag k=\"gnis:County_num\" v=\"027\" \/><tag k=\"gnis:ST_alpha\" v=\"WA\" \/><tag k=\"gnis:ST_num\" v=\"53\" \/><tag k=\"gnis:id\" v=\"1512077\" \/><tag k=\"import_uuid\" v=\"bb7269ee-502a-5391-8056-e3ce0e66489c\" \/><tag k=\"is_in\" v=\"Grays Harbor,Washington,Wash.,WA,USA\" \/><tag k=\"name\" v=\"Central Park\" \/><tag k=\"place\" v=\"village\" \/><\/node><\/osm>",
-  "headers": {
-    "Content-Type": "application/osm3s+xml"
-  }
-}

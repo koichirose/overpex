@@ -3,7 +3,7 @@ defmodule Overpex.Mixfile do
 
   def project do
     [app: :overpex,
-     version: "0.2.1",
+     version: "0.3.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -25,6 +25,7 @@ defmodule Overpex.Mixfile do
      {:sweet_xml, "~> 0.6.5"},
      {:poison, "~> 3.1.0"},
      {:ex_doc, "~> 0.15", only: :dev, runtime: false},
+     {:exvcr, "~> 0.8", only: :test},
      {:mock, "~> 0.2", only: :test}]
   end
 

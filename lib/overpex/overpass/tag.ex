@@ -1,4 +1,4 @@
-defmodule Overpex.Tag do
+defmodule Overpex.Overpass.Tag do
   @moduledoc """
   Key/Value strings that describe specific features of map elements (nodes, ways, or relations) or changesets.
 

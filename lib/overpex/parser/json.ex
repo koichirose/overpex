@@ -3,6 +3,9 @@ defmodule Overpex.Parser.JSON do
   Provides functions to parse JSON response from Overpass API
   """
 
+  alias Overpex.Overpass.{Node,Relation,RelationMember,Tag,Way}
+  alias Overpex.Response
+
   @doc """
   Parses JSON response from Overpass API
 
@@ -10,7 +13,7 @@ defmodule Overpex.Parser.JSON do
 
   Returns `{:ok, response}`, where `response` is an `Overpex.Response` struct. Returns `{:error, error}` if the JSON is empty or invalid, where `error` is a String describing the error.
   """
-  @spec parse(String.t) :: {:ok, %Overpex.Response{}} | {:error, String.t}
+  @spec parse(String.t) :: {:ok, %Response{}} | {:error, String.t}
   def parse(response)
 
   def parse(response) when is_binary(response) do
@@ -18,7 +21,7 @@ defmodule Overpex.Parser.JSON do
          %{"elements" => elements} <- Enum.into(json, %{}),
          elems                     <- Enum.map(elements, fn (node) -> Enum.into(node, %{}) end)
     do
-      {:ok, %Overpex.Response{
+      {:ok, %Response{
         nodes:     parse_nodes(elems),
         ways:      parse_ways(elems),
         relations: parse_relations(elems)
@@ -43,7 +46,7 @@ defmodule Overpex.Parser.JSON do
     elems
     |> Enum.filter(fn %{"type" => type} -> type == "node" end)
     |> Enum.map(fn (node) ->
-      %Overpex.Node{
+      %Node{
         id:   node["id"],
         lat:  node["lat"],
         lon:  node["lon"],
@@ -56,7 +59,7 @@ defmodule Overpex.Parser.JSON do
     elems
     |> Enum.filter(fn %{"type" => type} -> type == "way" end)
     |> Enum.map(fn (way) ->
-      %Overpex.Way{
+      %Way{
         id:    way["id"],
         nodes: way["nodes"],
         tags:  way["tags"] |> parse_tags()
@@ -68,7 +71,7 @@ defmodule Overpex.Parser.JSON do
     elems
     |> Enum.filter(fn %{"type" => type} -> type == "relation" end)
     |> Enum.map(fn (relation) ->
-      %Overpex.Relation{
+      %Relation{
         id:      relation["id"],
         tags:    relation["tags"]    |> parse_tags(),
         members: relation["members"] |> parse_relation_members()
@@ -81,7 +84,7 @@ defmodule Overpex.Parser.JSON do
   end
 
   defp parse_relation_member(%{"type" => type, "ref" => ref, "role" => role}) do
-    %Overpex.RelationMember{
+    %RelationMember{
       type: type,
       ref:  ref,
       role: role
@@ -96,6 +99,6 @@ defmodule Overpex.Parser.JSON do
   end
 
   defp parse_tag({key, value}) do
-    %Overpex.Tag{key: key, value: value}
+    %Tag{key: key, value: value}
   end
 end

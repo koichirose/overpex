@@ -1,8 +1,0 @@
-{
-  "type": "success",
-  "status": 200,
-  "body": "{}",
-  "headers": {
-    "Content-Type": "invalid"
-  }
-}

@@ -1,4 +1,4 @@
-defmodule Overpex.RelationMember do
+defmodule Overpex.Overpass.RelationMember do
   @moduledoc """
   See http://wiki.openstreetmap.org/wiki/Relation for more information
   """
