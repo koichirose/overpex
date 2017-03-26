@@ -12,7 +12,7 @@ Add `overpex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:overpex, "~> 0.2.1"}]
+  [{:overpex, "~> 0.3.0"}]
 end
 ```
 
