@@ -10,6 +10,7 @@ defmodule Overpex.Mixfile do
      deps: deps(),
      description: description(),
      package: package(),
+     test_coverage: [tool: ExCoveralls],
      name: "Overpex",
      source_url: "https://github.com/brunoasantos/overpex",
      docs: [main: "Overpex",
@@ -26,6 +27,7 @@ defmodule Overpex.Mixfile do
      {:poison, "~> 3.1.0"},
      {:ex_doc, "~> 0.15", only: :dev, runtime: false},
      {:exvcr, "~> 0.8", only: :test},
+     {:excoveralls, "~> 0.6", only: :test},
      {:mock, "~> 0.2", only: :test}]
   end
 

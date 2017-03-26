@@ -12,6 +12,5 @@ defmodule Overpex.Overpass.Node do
     tags: []
   }
 
-  defstruct id: 0, lat: 0.0, lon: 0.0, tags: [] 
+  defstruct id: 0, lat: 0.0, lon: 0.0, tags: []
 end
-

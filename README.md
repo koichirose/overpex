@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/brunoasantos/overpex.svg?branch=master)](https://travis-ci.org/brunoasantos/overpex)
 [![Hex.pm](https://img.shields.io/hexpm/v/overpex.svg)](https://hex.pm/packages/overpex)
+[![Coverage Status](https://coveralls.io/repos/github/brunoasantos/overpex/badge.svg?branch=master)](https://coveralls.io/github/brunoasantos/overpex?branch=master)
 
 Simple wrapper for [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API).
 
