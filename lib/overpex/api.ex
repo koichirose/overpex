@@ -22,9 +22,9 @@ defmodule Overpex.API do
 
   ## Return values
 
-  If the query is successfull, the function returns `{:ok, response}`, where `response` is an `Overpex.API.Response` struct. If an error occurs, the function returns `{:error, error}`, where `error` is a String describing the error.
+  If the query is successfull, the function returns `{:ok, response}`, where `response` is a tuple `{:format, body}`. `:format` is either `:xml` or `:json`, and `body` is a String with the raw body. If an error occurs, the function returns `{:error, error}`, where `error` is a String describing the error.
   """
-  @spec query(String.t, map) :: {:ok, %Overpex.API.Response{}} | {:error, String.t}
+  @spec query(String.t, map) :: {:ok, {:xml, String.t}} | {:ok, {:json, String.t}} | {:error, String.t}
   def query(query, options \\ %{}) do
     options = Map.merge(Overpex.Config.default, options)
 
