@@ -12,7 +12,7 @@ Add `overpex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:overpex, "~> 0.3.0"}]
+  [{:overpex, "~> 0.3.1"}]
 end
 ```
 
@@ -28,6 +28,15 @@ config :overpex,
 ```
 
 The default URL is `http://overpass-api.de/api/interpreter`.
+
+You can also set a timeout in miliseconds:
+
+```elixir
+config :overpex,
+  timeout: 10000 # timeout of 10 seconds
+```
+
+The default timeout is `5000` (5 seconds).
 
 ## Usage
 

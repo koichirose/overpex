@@ -13,7 +13,7 @@ defmodule Overpex.API do
   @spec query(String.t) :: {:ok, {:xml, String.t}} | {:ok, {:json, String.t}} | {:error, String.t}
   def query(query) do
     Overpex.Config.url()
-    |> HTTPoison.post(query)
+    |> HTTPoison.post(query, %{timeout: Overpex.Config.timeout})
     |> process_response()
   end
 
