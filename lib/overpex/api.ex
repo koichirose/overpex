@@ -14,7 +14,7 @@ defmodule Overpex.API do
           {:ok, {:xml, String.t()}} | {:ok, {:json, String.t()}} | {:error, String.t()}
   def query(query) do
     Overpex.Config.url()
-    |> HTTPoison.post(query, %{timeout: Overpex.Config.timeout()})
+    |> HTTPoison.post(query, [{"timeout", Integer.to_string(Overpex.Config.timeout())}])
     |> process_response()
   end
 
@@ -37,7 +37,11 @@ defmodule Overpex.API do
     {:error, "Invalid status code: #{code}. Expected 200"}
   end
 
-  defp process_response({:error, error = %HTTPoison.Error{}}) do
-    {:error, error.reason}
+  defp process_response({:ok, %HTTPoison.AsyncResponse{}}) do
+    {:error, "Invalid response"}
+  end
+
+  defp process_response(_) do
+    {:error, "unknown"}
   end
 end

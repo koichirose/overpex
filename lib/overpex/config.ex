@@ -22,7 +22,7 @@ defmodule Overpex.Config do
 
   Returns the value found in the config files. If nothing is found, returns the default value of 5000 (5 seconds)
   """
-  @spec timeout :: Integer.t()
+  @spec timeout :: integer()
   def timeout do
     Application.get_env(:overpex, :timeout, 5000)
   end
