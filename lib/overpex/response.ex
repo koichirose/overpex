@@ -5,13 +5,13 @@ defmodule Overpex.Response do
   Consists of a list of nodes, ways and relations.
   """
 
-  alias Overpex.Overpass.{Node,Relation,Way}
+  alias Overpex.Overpass.{Node, Relation, Way}
 
   @type t :: %__MODULE__{
-    nodes:     [%Node{}],
-    ways:      [%Way{}],
-    relations: [%Relation{}]
-  }
+          nodes: [%Node{}],
+          ways: [%Way{}],
+          relations: [%Relation{}]
+        }
 
   defstruct nodes: [], ways: [], relations: []
 end

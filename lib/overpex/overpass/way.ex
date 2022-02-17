@@ -5,13 +5,13 @@ defmodule Overpex.Overpass.Way do
   See http://wiki.openstreetmap.org/wiki/Way for more information
   """
 
-  alias Overpex.Overpass.{Node,Tag}
+  alias Overpex.Overpass.{Node, Tag}
 
   @type t :: %__MODULE__{
-    id:    integer,
-    nodes: [%Node{}],
-    tags:  [%Tag{}]
-  }
+          id: integer,
+          nodes: [%Node{}],
+          tags: [%Tag{}]
+        }
 
   defstruct id: 0, nodes: [], tags: []
 end

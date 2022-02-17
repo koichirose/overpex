@@ -4,10 +4,10 @@ defmodule Overpex.Overpass.RelationMember do
   """
 
   @type t :: %__MODULE__{
-    type: String.t,
-    ref:  String.t,
-    role: String.t,
-  }
+          type: String.t(),
+          ref: String.t(),
+          role: String.t()
+        }
 
   defstruct type: "", ref: "", role: ""
 end

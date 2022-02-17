@@ -6,11 +6,11 @@ defmodule Overpex.Overpass.Node do
   """
 
   @type t :: %__MODULE__{
-    id:   integer,
-    lat:  float,
-    lon:  float,
-    tags: []
-  }
+          id: integer,
+          lat: float,
+          lon: float,
+          tags: []
+        }
 
   defstruct id: 0, lat: 0.0, lon: 0.0, tags: []
 end

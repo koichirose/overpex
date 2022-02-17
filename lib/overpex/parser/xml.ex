@@ -4,7 +4,7 @@ defmodule Overpex.Parser.XML do
   """
 
   import SweetXml
-  alias Overpex.Overpass.{Node,Relation,RelationMember,Tag,Way}
+  alias Overpex.Overpass.{Node, Relation, RelationMember, Tag, Way}
   alias Overpex.Response
 
   @doc """
@@ -14,19 +14,22 @@ defmodule Overpex.Parser.XML do
 
   Returns `{:ok, response}`, where `response` is an `Overpex.Response` struct. Returns `{:error, error}` if the XML is empty or invalid, where `error` is a String describing the error.
   """
-  @spec parse(String.t) :: {:ok, %Response{}} | {:error, String.t}
+  @spec parse(String.t()) :: {:ok, %Response{}} | {:error, String.t()}
   def parse(response)
 
   def parse(response) when is_binary(response) do
     try do
       case xpath(response, ~x"//osm") do
-        nil   -> error_response("No elements to parse in response", response)
+        nil ->
+          error_response("No elements to parse in response", response)
+
         elems ->
-          {:ok, %Response{
-            nodes:     parse_nodes(elems),
-            ways:      parse_ways(elems),
-            relations: parse_relations(elems)
-          }}
+          {:ok,
+           %Response{
+             nodes: parse_nodes(elems),
+             ways: parse_ways(elems),
+             relations: parse_relations(elems)
+           }}
       end
     catch
       # Handle SweetXML through :exit if the XML is invalid
@@ -45,11 +48,11 @@ defmodule Overpex.Parser.XML do
   defp parse_nodes(osm) do
     osm
     |> xpath(~x"./node"l)
-    |> Enum.map(fn (node) ->
+    |> Enum.map(fn node ->
       %Node{
-        id:   node |> xpath(~x"./@id"i),
-        lat:  node |> xpath(~x"./@lat"s) |> String.to_float(),
-        lon:  node |> xpath(~x"./@lon"s) |> String.to_float(),
+        id: node |> xpath(~x"./@id"i),
+        lat: node |> xpath(~x"./@lat"s) |> String.to_float(),
+        lon: node |> xpath(~x"./@lon"s) |> String.to_float(),
         tags: node |> parse_tags()
       }
     end)
@@ -58,11 +61,11 @@ defmodule Overpex.Parser.XML do
   defp parse_ways(osm) do
     osm
     |> xpath(~x"./way"l)
-    |> Enum.map(fn (way) ->
+    |> Enum.map(fn way ->
       %Way{
-        id:    way |> xpath(~x"./@id"i),
-        nodes: way |> xpath(~x"./nd"l)  |> Enum.map(fn (nd) -> nd |> xpath(~x"./@ref"i) end),
-        tags:  way |> parse_tags()
+        id: way |> xpath(~x"./@id"i),
+        nodes: way |> xpath(~x"./nd"l) |> Enum.map(fn nd -> nd |> xpath(~x"./@ref"i) end),
+        tags: way |> parse_tags()
       }
     end)
   end
@@ -70,11 +73,11 @@ defmodule Overpex.Parser.XML do
   defp parse_relations(osm) do
     osm
     |> xpath(~x"./relation"l)
-    |> Enum.map(fn (relation) ->
+    |> Enum.map(fn relation ->
       %Relation{
-        id:      relation |> xpath(~x"./@id"i),
-        members: relation |> parse_relation_members() ,
-        tags:    relation |> parse_tags()
+        id: relation |> xpath(~x"./@id"i),
+        members: relation |> parse_relation_members(),
+        tags: relation |> parse_tags()
       }
     end)
   end
@@ -88,7 +91,7 @@ defmodule Overpex.Parser.XML do
   defp parse_relation_member(member) do
     %RelationMember{
       type: member |> xpath(~x"./@type"s),
-      ref:  member |> xpath(~x"./@ref"i),
+      ref: member |> xpath(~x"./@ref"i),
       role: member |> xpath(~x"./@role"s)
     }
   end
@@ -97,12 +100,12 @@ defmodule Overpex.Parser.XML do
     collection
     |> xpath(~x"./tag"l)
     |> Enum.map(&parse_tag/1)
-    |> Enum.sort(fn(a, b) -> a.key <= b.key end)
+    |> Enum.sort(fn a, b -> a.key <= b.key end)
   end
 
   defp parse_tag(tag) do
     %Tag{
-      key:   xpath(tag, ~x"./@k"s),
+      key: xpath(tag, ~x"./@k"s),
       value: xpath(tag, ~x"./@v"s)
     }
   end
